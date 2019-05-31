@@ -1,10 +1,12 @@
 <html>
 	<head>
-		<title>memo</title>
+		<title>webStorageDEMO</title>
 	</head>
 	<body>
 		<form>
-			<input type="button" name="savebtn" value="save" onclick="saveContent()" />
+			<input type="button" name="savebtn" value="webStoragesave" onclick="saveContent()" />
+			<input type="button" name="clearbtn" value="webStorageClear" onclick="clearContent()" />
+
 		</form>
 		<div id="textarea" contenteditable="true" style="border:1px solid;"></div>
 		<script type="text/javascript">
@@ -15,6 +17,10 @@
 				var key = "saveeditor";
 				var value = textContent.innerHTML;
 				webStorage.setItem(key, value);
+			}
+			function clearContent(){
+				localStorage.removeItem("saveeditor");
+				document.getElementById("textarea").innerText = "";
 			}
 			window.onload = function() {
 			var loaded = webStorage.getItem("saveeditor");
