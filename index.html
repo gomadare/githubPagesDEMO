@@ -1,8 +1,26 @@
 <html>
-  
-<h1>まだなにもないから見ないで</h1>
-<h2>viでソース編集はめんどい</h2>
-<a>test_vi_edit'</a>
-<h3>テキストエディタアプリで編集してgitコマンドでadd,commit,pushを試す</h3>
-<a>編集、git操作すべてスマホでできる</a>
+	<head>
+		<title>memo</title>
+	</head>
+	<body>
+		<form>
+			<input type="button" name="savebtn" value="save" onclick="saveContent()" />
+		</form>
+		<div id="textarea" contenteditable="true" style="border:1px solid;"></div>
+		<script type="text/javascript">
+			var webStorage = localStorage;
+			var clssw = 0;
+			function saveContent(){
+				var textContent = document.getElementById("textarea");
+				var key = "saveeditor";
+				var value = textContent.innerHTML;
+				webStorage.setItem(key, value);
+			}
+			window.onload = function() {
+			var loaded = webStorage.getItem("saveeditor");
+				document.getElementById("textarea").innerHTML = loaded;
+				clssw = 1;
+			};
+		</script>
+ 	</body>
 </html>
